@@ -1,10 +1,11 @@
 import { createContext, useState, useContext } from "react";
+import {useLocalStorage} from '@uidotdev/usehooks';
 
 const UserContext = createContext(null);
 
 const UserProvider = ({children}) => {
     const [user, setUser] = useState(null);
-    const [isLogged, setIsLogged] = useState(false);
+    const [isLogged, setIsLogged] = useLocalStorage('isLogged', false);
 
     return (
         <UserContext.Provider value={{
